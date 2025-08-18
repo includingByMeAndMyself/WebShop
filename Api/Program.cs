@@ -19,6 +19,4 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/weatherforecast", () => "Hello Store API");
-
 app.Run();
