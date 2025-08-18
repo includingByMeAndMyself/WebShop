@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Api.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Data;
@@ -9,4 +10,6 @@ public class AppDbContext : IdentityDbContext
     {
         
     }
+
+    public DbSet<Product> Products { get; set; }
 }
