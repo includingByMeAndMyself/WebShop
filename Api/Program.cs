@@ -7,6 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPostgresSqlDbContext(builder.Configuration);
 builder.Services.AddPostgresSqlIdentityContext();
+builder.Services.AddConfigureIdentityOption();
 
 
 var app = builder.Build();
