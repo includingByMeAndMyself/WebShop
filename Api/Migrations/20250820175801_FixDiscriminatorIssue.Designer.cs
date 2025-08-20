@@ -3,6 +3,7 @@ using System;
 using Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250820175801_FixDiscriminatorIssue")]
+    partial class FixDiscriminatorIssue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,102 +61,102 @@ namespace Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0447db44-fd24-410f-b4a8-300c6b4ffd02"),
-                            Category = "Категория 1",
-                            Descritopr = "Играет консультация насущным нас обеспечение уровня выбранный консультация.",
+                            Id = new Guid("eea2c2e7-b08d-4864-972e-e913d97c4598"),
+                            Category = "Категория 3",
+                            Descritopr = "Идейные таким зависит постоянное сущности.",
                             Image = "https://placehold.co/200",
-                            Name = "Автомобиль",
-                            Price = 169.74m,
+                            Name = "Ножницы",
+                            Price = 810.74m,
+                            SpecialTag = "Новинка"
+                        },
+                        new
+                        {
+                            Id = new Guid("942fa2ce-da26-48f9-b0de-0e46231c7f15"),
+                            Category = "Категория 2",
+                            Descritopr = "Сомнений создание а сомнений.",
+                            Image = "https://placehold.co/200",
+                            Name = "Клатч",
+                            Price = 278.81m,
                             SpecialTag = "Популярный"
                         },
                         new
                         {
-                            Id = new Guid("a90566f7-f2b4-4e46-a268-8d219a287ac6"),
+                            Id = new Guid("b3eb4090-9abe-410d-a528-b8e754bb685a"),
                             Category = "Категория 2",
-                            Descritopr = "Разнообразный стороны шагов проверки уровня а за повседневная создаёт.",
-                            Image = "https://placehold.co/200",
-                            Name = "Сабо",
-                            Price = 694.85m,
-                            SpecialTag = "Новинка"
-                        },
-                        new
-                        {
-                            Id = new Guid("37dad84f-0903-4914-bcd3-11feef5283ff"),
-                            Category = "Категория 2",
-                            Descritopr = "Подготовке укрепления специалистов.",
+                            Descritopr = "Задач требует обуславливает предпосылки кадровой соображения.",
                             Image = "https://placehold.co/200",
                             Name = "Куртка",
-                            Price = 561.84m,
+                            Price = 130.23m,
+                            SpecialTag = "Рекомендуемый"
+                        },
+                        new
+                        {
+                            Id = new Guid("b91fa1dd-0c07-45cf-9452-40de5c5c97ea"),
+                            Category = "Категория 1",
+                            Descritopr = "Обучения начало прежде отношении позиции развития базы поставленных задания модели.",
+                            Image = "https://placehold.co/200",
+                            Name = "Берет",
+                            Price = 432.51m,
                             SpecialTag = "Новинка"
                         },
                         new
                         {
-                            Id = new Guid("f5fe5640-3b79-48f0-a6d2-7ea031caf63c"),
-                            Category = "Категория 1",
-                            Descritopr = "Финансовых развития материально-технической поставленных сознания начало широкому управление дальнейшее.",
+                            Id = new Guid("ddd59598-d416-4c22-87c7-f3bd6811b6e2"),
+                            Category = "Категория 2",
+                            Descritopr = "Повышению намеченных дальнейшее.",
                             Image = "https://placehold.co/200",
-                            Name = "Носки",
-                            Price = 143.16m,
+                            Name = "Куртка",
+                            Price = 882.32m,
                             SpecialTag = "Популярный"
                         },
                         new
                         {
-                            Id = new Guid("eb5b253d-a1db-4104-a8bc-a7dd8cbe4e09"),
-                            Category = "Категория 2",
-                            Descritopr = "Подготовке показывает сложившаяся рост.",
+                            Id = new Guid("8f811eec-fc31-46da-8ee3-7bcf8df4fe2f"),
+                            Category = "Категория 3",
+                            Descritopr = "Сомнений модернизации участия таким напрямую сознания всего насущным.",
                             Image = "https://placehold.co/200",
-                            Name = "Кепка",
-                            Price = 676.48m,
-                            SpecialTag = "Новинка"
+                            Name = "Свитер",
+                            Price = 564.32m,
+                            SpecialTag = "Популярный"
                         },
                         new
                         {
-                            Id = new Guid("046e9b51-48b4-49db-9345-1abc6329036b"),
+                            Id = new Guid("c321aa6b-cb25-45d9-9ede-66ff6b1ab4d6"),
                             Category = "Категория 2",
-                            Descritopr = "Рамки инновационный массового.",
+                            Descritopr = "Кругу по дальнейшее прогресса следует зависит значимость изменений внедрения профессионального.",
+                            Image = "https://placehold.co/200",
+                            Name = "Берет",
+                            Price = 898.62m,
+                            SpecialTag = "Рекомендуемый"
+                        },
+                        new
+                        {
+                            Id = new Guid("600e3ed9-454e-4a90-87e0-7929b5d0e33e"),
+                            Category = "Категория 1",
+                            Descritopr = "Обучения задача порядка воздействия социально-экономическое инновационный реализация профессионального.",
+                            Image = "https://placehold.co/200",
+                            Name = "Стул",
+                            Price = 479.86m,
+                            SpecialTag = "Рекомендуемый"
+                        },
+                        new
+                        {
+                            Id = new Guid("9cace93d-83bb-4f84-a6e8-1f0707122622"),
+                            Category = "Категория 2",
+                            Descritopr = "Активности нашей сознания специалистов количественный развития.",
                             Image = "https://placehold.co/200",
                             Name = "Куртка",
-                            Price = 962.21m,
-                            SpecialTag = "Новинка"
+                            Price = 710.83m,
+                            SpecialTag = "Популярный"
                         },
                         new
                         {
-                            Id = new Guid("8e9b7f49-9520-4e53-bd24-73d4c69135ee"),
+                            Id = new Guid("a7863a27-2e91-482e-bf96-ee6229f4e007"),
                             Category = "Категория 1",
-                            Descritopr = "Рамки нас постоянный общества потребностям.",
-                            Image = "https://placehold.co/200",
-                            Name = "Носки",
-                            Price = 769.41m,
-                            SpecialTag = "Рекомендуемый"
-                        },
-                        new
-                        {
-                            Id = new Guid("30d05500-a6b0-4b6b-a290-3b7cf6c18adf"),
-                            Category = "Категория 2",
-                            Descritopr = "Существующий насущным плановых целесообразности.",
-                            Image = "https://placehold.co/200",
-                            Name = "Портмоне",
-                            Price = 585.56m,
-                            SpecialTag = "Рекомендуемый"
-                        },
-                        new
-                        {
-                            Id = new Guid("4a7ca284-89a2-40e4-a5c2-7c58a00d8c27"),
-                            Category = "Категория 1",
-                            Descritopr = "Влечёт сложившаяся роль качественно зависит следует важную условий различных проверки.",
-                            Image = "https://placehold.co/200",
-                            Name = "Майка",
-                            Price = 780.18m,
-                            SpecialTag = "Новинка"
-                        },
-                        new
-                        {
-                            Id = new Guid("482211d2-8a65-418c-9a7f-0c18b0e2b34c"),
-                            Category = "Категория 1",
-                            Descritopr = "Создание поэтапного условий для от выполнять массового структура выполнять определения.",
+                            Descritopr = "Общества практика новая проект специалистов финансовых однако.",
                             Image = "https://placehold.co/200",
                             Name = "Шарф",
-                            Price = 969.34m,
+                            Price = 405.84m,
                             SpecialTag = "Рекомендуемый"
                         });
                 });

@@ -65,7 +65,7 @@ public class ProductController : StoreController
 
     [HttpPut]
     public async Task<ActionResult<ResponseServer>> UpdateProduct(
-        [FromBody] Guid id, ProductUpdateDto product)
+        [FromQuery] Guid id, [FromBody] ProductUpdateDto product)
     {
         var productFromDb = await dbContext.Products.FindAsync(id);
         if (productFromDb is null)

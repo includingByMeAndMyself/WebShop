@@ -19,4 +19,5 @@ public class AppDbContext : IdentityDbContext
     }
 
     public DbSet<Product> Products { get; set; }
+    public DbSet<AppUser> AppUsers { get; set; }
 }
