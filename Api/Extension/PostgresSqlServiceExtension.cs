@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.Extension;
 
-public static class PostgresSqlServerExtension
+public static class PostgresSqlServiceExtension
 {
     public static void AddPostgresSqlDbContext(this IServiceCollection services, IConfiguration configuration)
     {
