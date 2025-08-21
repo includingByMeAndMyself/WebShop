@@ -10,6 +10,7 @@ builder.Services.AddPostgresSqlIdentityContext();
 builder.Services.AddConfigureIdentityOption();
 builder.Services.AddJwtTokenGenerator();
 builder.Services.AddAuthenticationService(builder.Configuration);
+builder.Services.AddCartService();
 builder.Services.AddCors();
 
 
