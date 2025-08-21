@@ -13,7 +13,7 @@ public class CartService
         _dbContext = dbContext;
     }
 
-    public async Task CreateNewAsync(string userId, Guid productId, int quantity)
+    public async Task CreateNewCartAsync(string userId, Guid productId, int quantity)
     {
         var cart = new Cart
         {
