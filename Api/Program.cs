@@ -9,6 +9,8 @@ builder.Services.AddPostgresSqlDbContext(builder.Configuration);
 builder.Services.AddPostgresSqlIdentityContext();
 builder.Services.AddConfigureIdentityOption();
 builder.Services.AddJwtTokenGenerator();
+builder.Services.AddAuthenticationService(builder.Configuration);
+builder.Services.AddCors();
 
 
 var app = builder.Build();
@@ -20,6 +22,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(o =>
+{
+    o.AllowAnyHeader();
+    o.AllowAnyMethod();
+    o.AllowAnyOrigin();
+    o.WithExposedHeaders("*");
+});
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 await app.Services.InitializeRoleAsync();
 app.Run();
