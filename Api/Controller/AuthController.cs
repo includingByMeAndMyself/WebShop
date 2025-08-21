@@ -3,6 +3,7 @@ using Api.Common;
 using Api.Data;
 using Api.Model;
 using Api.ModelDto;
+using Api.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,15 +14,18 @@ public class AuthController : StoreController
 {
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly JwtTokenGenerator _tokenGenerator;
 
     public AuthController(
         AppDbContext dbContext,
         UserManager<AppUser> userManager,
-        RoleManager<IdentityRole> roleManager)
+        RoleManager<IdentityRole> roleManager,
+        JwtTokenGenerator tokenGenerator)
         : base(dbContext)
     {
         _userManager = userManager;
         _roleManager = roleManager;
+        _tokenGenerator = tokenGenerator;
     }
 
     [HttpPost]
@@ -84,6 +88,40 @@ public class AuthController : StoreController
         {
             StatusCode = HttpStatusCode.OK,
             Result = "Регистрация завершена"
+        });
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ResponseServer>> Login(
+        [FromBody] LoginRequestDto loginRequestDto)
+    {
+        var userFromDb = await dbContext
+            .AppUsers
+            .FirstOrDefaultAsync(u => u.Email.ToLower() ==
+                                      loginRequestDto.Email.ToLower());
+
+        if (userFromDb is null 
+            || !await _userManager.CheckPasswordAsync(
+                userFromDb, loginRequestDto.Password))
+        {
+            return BadRequest(new ResponseServer()
+            {
+                IsSuccess = false,
+                StatusCode = HttpStatusCode.BadRequest,
+                ErrorMessages = { "Такой пользователь не существует" }
+            });
+        }
+
+        var roles = await _userManager.GetRolesAsync(userFromDb);
+        var token = _tokenGenerator.GenerateJwtToken(userFromDb, roles);
+
+        return Ok(new ResponseServer()
+        {
+            StatusCode = HttpStatusCode.OK,
+            Result = new LoginResponseDto()
+            {
+                Token = token
+            }
         });
     }
 }

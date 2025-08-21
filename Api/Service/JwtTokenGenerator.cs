@@ -13,7 +13,7 @@ public class JwtTokenGenerator
     public JwtTokenGenerator(IConfiguration configuration)
     {
         var token = configuration["AuthSettings:SecretKey"];
-        _secretKey = token ?? "const_secret_key";
+        _secretKey = token ?? "const_secret_key_const_secret_key_const_secret_key_const_secret_key_const_secret_key";
     }
 
     public string GenerateJwtToken(AppUser user, IList<string> roles)
