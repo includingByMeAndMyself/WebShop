@@ -1,4 +1,5 @@
 ﻿using Api.Service;
+using Api.Service.Payment;
 
 namespace Api.Extension;
 
@@ -9,6 +10,7 @@ public static class BusinessLogicServiceExtension
     {
         services.AddScoped<CartService>();
         services.AddScoped<OrderService>();
+        services.AddScoped<IPaymentService, FakePaymentService>();
         
         return services;
     }
