@@ -26,6 +26,25 @@ public class ProductController : StoreController
     }
 
     [HttpGet]
+    public async Task<IActionResult> FetchProductsWithPagination(
+        int skip = 0, int take = 5)
+    {
+        var product = await dbContext
+            .Products
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
+        
+        var response = new ResponseServer()
+        {
+            StatusCode = HttpStatusCode.OK,
+            Result = product
+        };
+
+        return Ok(response);
+    }
+
+    [HttpGet]
     public async Task<IActionResult> GetProductById(Guid id)
     {
         var product = await dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
